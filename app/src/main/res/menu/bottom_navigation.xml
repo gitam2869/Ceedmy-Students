@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home"
+        android:id="@+id/bottomNavigationHomeMenuId"
+        android:icon="@drawable/ic_home_black_24dp"/>
+    <item android:title="My Courses"
+        android:id="@+id/bottomNavigationMyCourseMenuId"
+        android:icon="@drawable/ic_laptop_chromebook_black_24dp"/>
+
+    <item android:title="Wishlist"
+        android:id="@+id/bottomNavigationWishlistMenuId"
+        android:icon="@drawable/ic_favorite_black_24dp"/>
+
+    <item android:title="Account"
+        android:id="@+id/bottomNavigationAccountMenuId"
+        android:icon="@drawable/ic_person_black_24dp"/>
+</menu>
