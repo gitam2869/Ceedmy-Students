@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,62 +17,115 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".DemoVideoActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:name=".SplashScreenActivity"
+            >
 
-        <activity
-            android:name=".DemoTestActivity"
-            android:screenOrientation="portrait">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".GoalSetActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity
-            android:name=".AccountActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".WishlistActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".MyCoursesActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".CreatePasswordActivity" />
-        <activity
-            android:name=".HomePageActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".EmailVerificationActivity" />
-        <activity android:name=".MobileVerificationActivity" />
-        <activity android:name=".NewAccountActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+
+        <service android:name=".FCMIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo3" />
+
+<!--        <meta-data-->
+<!--            android:name="com.google.firebandroid.permission.SYSTEM_ALERT_WINDOWase.messaging.default_notification_channel_id"-->
+<!--            android:value="Default"/>-->
+
+        <activity
+            android:name=".SubscribedCourseActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".AllCoursesActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".YouTubeActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".CourseVideoActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".CourseDescriptionActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".GoalSetActivity"
+            android:launchMode="singleTop">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".AccountActivity"
+            android:label="Account"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".WishlistActivity"
+            android:label="Wishlist"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".LiveSessionActivity"
+            android:label="Live Session"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".MyCoursesActivity"
+            android:label="My Courses"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".CreatePasswordActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".HomePageActivity" />
+        <activity
+            android:name=".EmailVerificationActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".MobileVerificationActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".NewAccountActivity"
+            android:launchMode="singleTop">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop">
+
         </activity>
     </application>
 

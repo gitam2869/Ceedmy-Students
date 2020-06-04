@@ -4,12 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.card.MaterialCardView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -40,14 +40,15 @@ public class GoalSetAdapter extends RecyclerView.Adapter<GoalSetAdapter.Language
     {
         GoalSetInfo goalSetInfo = goalSetInfoList.get(position);
 
-        holder.textViewTopinName.setText(goalSetInfo.getname());
+        holder.textViewTopinName.setText(goalSetInfo.getExamcategory());
 
-        Picasso.get().load(goalSetInfo.getpath()).into(holder.imageViewExamLogo, new Callback() {
+        Picasso.get().load(goalSetInfo.getPath()).into(holder.imageViewExamLogo, new Callback() {
             @Override
             public void onSuccess() {
-                holder.shimmerFrameLayout.setVisibility(View.GONE);
+//                holder.shimmerFrameLayout.setVisibility(View.GONE);
                 holder.textViewTopinName.setVisibility(View.VISIBLE);
                 holder.imageViewExamLogo.setVisibility(View.VISIBLE);
+                holder.progressBarImageLoading.setVisibility(View.GONE);
             }
 
             @Override
@@ -87,7 +88,8 @@ public class GoalSetAdapter extends RecyclerView.Adapter<GoalSetAdapter.Language
         MaterialCardView materialCardVideoList;
         TextView textViewTopinName;
         ImageView imageViewExamLogo;
-        ShimmerFrameLayout shimmerFrameLayout;
+        ProgressBar progressBarImageLoading;
+//        ShimmerFrameLayout shimmerFrameLayout;
 
 
         public LanguageViewHolder(@NonNull View itemView, final OnItemClickListener listener)
@@ -97,7 +99,8 @@ public class GoalSetAdapter extends RecyclerView.Adapter<GoalSetAdapter.Language
             materialCardVideoList = itemView.findViewById(R.id.idCardViewGoalList);
             textViewTopinName = itemView.findViewById(R.id.idTextViewExamNameGoalList);
             imageViewExamLogo = itemView.findViewById(R.id.idImageViewExamLogoGoalList);
-            shimmerFrameLayout = itemView.findViewById(R.id.shimmer);
+            progressBarImageLoading = itemView.findViewById(R.id.idProgressbarImageLoadingGoalList);
+//            shimmerFrameLayout = itemView.findViewById(R.id.shimmer);
 
 
             materialCardVideoList.setOnClickListener(new View.OnClickListener()

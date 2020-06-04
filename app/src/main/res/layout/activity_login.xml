@@ -117,7 +117,7 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="48dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="24dp"
                 android:insetTop="1dp"
                 android:insetBottom="1dp"
                 android:text="LogIN"
@@ -159,7 +159,7 @@
                 android:textSize="16sp"
                 app:rippleColor="#ffff"
                 app:cornerRadius="0dp"
-                app:backgroundTint="@color/design_default_color_primary_variant"
+                app:backgroundTint="@color/design_default_color_primary"
                 />
 
         </LinearLayout>

@@ -7,9 +7,14 @@
         android:id="@+id/bottomNavigationMyCourseMenuId"
         android:icon="@drawable/ic_laptop_chromebook_black_24dp"/>
 
+    <item android:title="Live"
+        android:id="@+id/bottomNavigationLiveSessionMenuId"
+        android:icon="@drawable/ic_live_tv_black_24dp"/>
+    
     <item android:title="Wishlist"
         android:id="@+id/bottomNavigationWishlistMenuId"
         android:icon="@drawable/ic_favorite_black_24dp"/>
+
 
     <item android:title="Account"
         android:id="@+id/bottomNavigationAccountMenuId"

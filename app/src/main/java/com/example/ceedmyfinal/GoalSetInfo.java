@@ -3,40 +3,28 @@ package com.example.ceedmyfinal;
 public class GoalSetInfo
 {
     private String id;
-    private String name;
+    private String examcategory;
     private String path;
-    private String videoLink;
 
-
-
-    public GoalSetInfo(
-            String id,
-            String name,
-            String path,
-            String videoLink
-    )
+    public GoalSetInfo(String id, String examcategory, String path)
     {
         this.id = id;
-        this.name = name;
+        this.examcategory = examcategory;
         this.path = path;
-        this.videoLink = videoLink;
     }
 
-    public String getid()
+    public String getId()
     {
         return id;
     }
 
-    public String getname()
+    public String getExamcategory()
     {
-        return name;
+        return examcategory;
     }
 
-    public String getpath()
+    public String getPath()
     {
         return path;
     }
-
-    public String getVideoLink(){return videoLink;}
-
 }

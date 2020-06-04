@@ -198,7 +198,7 @@
                 android:textSize="16sp"
                 app:rippleColor="#ffff"
                 app:cornerRadius="0dp"
-                app:backgroundTint="@color/design_default_color_primary_variant"
+                app:backgroundTint="@color/design_default_color_primary"
                 />
 
         </LinearLayout>

@@ -1,17 +1,8 @@
 package com.example.ceedmyfinal;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.AsyncTaskLoader;
-import androidx.loader.content.Loader;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,6 +12,14 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.Loader;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -144,33 +143,42 @@ public class NewAccountActivity extends AppCompatActivity implements LoaderManag
         if(name.length() == 0)
         {
             textInputLayoutName.setError("Name not blank");
+            textInputLayoutName.requestFocus();
+            textInputLayoutName.setErrorEnabled(false);
             return;
         }
         if(!name.matches("[a-zA-Z][a-zA-Z ]*"))
         {
             textInputLayoutName.setError("Name not contains other than characters");
+            textInputLayoutName.requestFocus();
             return;
         }
 
         if(mobile.length() == 0)
         {
             textInputLayoutMobile.setError("Mobile number not blank");
+            textInputLayoutMobile.requestFocus();
+            textInputLayoutMobile.setErrorEnabled(false);
             return;
         }
         if(mobile.length() < 10 || mobile.length() > 10)
         {
             textInputLayoutMobile.setError("Mobile number must be 10 digit");
+            textInputLayoutMobile.requestFocus();
             return;
         }
 
         if(email.length() == 0)
         {
             textInputLayoutEmail.setError("Email ID not blank");
+            textInputLayoutEmail.requestFocus();
+            textInputLayoutEmail.setErrorEnabled(false);
             return;
         }
         if(!isValidEmail(email))
         {
             textInputLayoutEmail.setError("Enter Valid Email ID");
+            textInputLayoutEmail.requestFocus();
             return;
         }
 

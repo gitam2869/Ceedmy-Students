@@ -5,38 +5,618 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountActivity">
+    tools:context=".AccountActivity"
+    android:background="@color/backgroundColor"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:layout_centerInParent="true"
-        android:textSize="48sp"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/idButtonSignOutAccountActivity"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="24dp"
-        android:insetTop="1dp"
-        android:insetBottom="1dp"
-        app:rippleColor="#ffff"
+        android:layout_height="match_parent"
+        android:layout_above="@id/idBottomNavigationView"
+        android:layout_alignParentTop="true">
 
-        android:text="Sign out"
-        android:textSize="16sp"
-        app:cornerRadius="0dp"
-        />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+<!--                profile settings-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Profile"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textFontWeight="@android:integer/config_longAnimTime"
+                    android:textSize="20sp"
+
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/idCardViewCourseDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+
+                        <TextView
+                            android:id="@+id/idTextViewCourseDescriptionCourseDescriptionActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Name"
+                            android:textColor="@color/material_on_surface_emphasis_medium"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="16sp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/idTextViewUserNameAccountActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Gautam Helange"
+                            android:textColor="@android:color/secondary_text_light"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="18sp"
+
+                            android:layout_marginTop="8dp"
+                            />
+
+                        <View
+                            android:layout_marginTop="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0.5dp"
+                            android:background="#66000000"
+                            />
+
+                        <TextView
+                            android:id="@+id/idTextViewCourseDescriptionCourseDescriptionActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Email Id"
+                            android:textColor="@color/material_on_surface_emphasis_medium"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="16sp"
+                            android:layout_marginTop="12dp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/idTextViewUserEmailAccountActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="gautamhelange025@gmail.com"
+                            android:textColor="@android:color/secondary_text_light"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="18sp"
+
+                            android:layout_marginTop="8dp"
+                            />
+
+
+<!--                        mobile phone-->
+
+                        <View
+                            android:layout_marginTop="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0.5dp"
+                            android:background="#66000000"
+                            />
+
+                        <TextView
+                            android:id="@+id/idTextViewCourseDescriptionCourseDescriptionActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Phone Number"
+                            android:textColor="@color/material_on_surface_emphasis_medium"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="16sp"
+                            android:layout_marginTop="12dp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/idTextViewUserPhoneNumberAccountActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="7517424135"
+                            android:textColor="@android:color/secondary_text_light"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="18sp"
+
+                            android:layout_marginTop="8dp"
+                            />
+
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Goal"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textFontWeight="@android:integer/config_longAnimTime"
+
+                    android:textSize="20sp"
+
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/idCardViewCourseDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+
+                        <TextView
+                            android:id="@+id/idTextViewCourseDescriptionCourseDescriptionActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Your Goal"
+                            android:textColor="@color/material_on_surface_emphasis_medium"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="16sp"
+
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
+                            >
+
+                            <TextView
+                                android:id="@+id/idTextViewUserGoalAccountActivity"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Banking"
+                                android:textColor="@android:color/secondary_text_light"
+                                android:textFontWeight="@android:integer/config_longAnimTime"
+                                android:textSize="18sp"
+
+                                android:layout_marginTop="8dp"
+                                />
+
+                            <TextView
+                                android:id="@+id/idTextViewChangeYourGoalAccountActivity"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:fontFamily="sans-serif-black"
+                                android:text="Change Your Goal"
+                                android:textColor="@color/colorPrimary"
+                                android:textFontWeight="@android:integer/config_longAnimTime"
+                                android:textSize="16sp"
+                                android:layout_marginTop="8dp"
+                                android:gravity="right"
+
+                                />
+
+
+
+
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/idTextViewChangeYourGoalAccountActivity"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:fontFamily="sans-serif-black"-->
+<!--                                android:text="Change Your Goal"-->
+<!--                                android:textColor="@color/material_on_surface_emphasis_medium"-->
+<!--                                android:textFontWeight="@android:integer/config_longAnimTime"-->
+<!--                                android:textSize="16sp"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_margin="16dp"-->
+<!--                                /><com.google.android.material.card.MaterialCardView-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                app:cardElevation="0dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                app:cardCornerRadius="0dp"-->
+<!--                                android:clickable="true"-->
+<!--                                android:focusable="true"-->
+<!--                                android:checkable="true"-->
+<!--                                android:layout_marginTop="8dp"-->
+<!--                                android:padding="12dp"-->
+
+<!--                                >-->
+<!--                                <TextView-->
+<!--                                    android:id="@+id/idTextViewChangeYourGoalAccountActivity"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:fontFamily="sans-serif-black"-->
+<!--                                    android:text="Change Your Goal"-->
+<!--                                    android:textColor="@color/material_on_surface_emphasis_medium"-->
+<!--                                    android:textFontWeight="@android:integer/config_longAnimTime"-->
+<!--                                    android:textSize="16sp"-->
+<!--                                    android:gravity="center"-->
+<!--                                    android:layout_margin="16dp"-->
+<!--                                    />-->
+
+<!--                            </com.google.android.material.card.MaterialCardView>-->
+
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+
+
+
+<!--                jj-->
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Security"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textFontWeight="@android:integer/config_longAnimTime"
+
+                    android:textSize="20sp"
+
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/idCardViewCourseDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+
+                        <TextView
+                            android:id="@+id/idTextViewCourseDescriptionCourseDescriptionActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Password"
+                            android:textColor="@color/material_on_surface_emphasis_medium"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="16sp"
+
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
+
+                            >
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="**********"
+                                android:textColor="@android:color/secondary_text_light"
+                                android:textFontWeight="@android:integer/config_longAnimTime"
+                                android:textSize="18sp"
+
+                                android:layout_marginTop="8dp"
+                                />
+
+                            <TextView
+                                android:id="@+id/idTextViewChangePasswordAccountActivity"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:fontFamily="sans-serif-black"
+                                android:text="Change Password"
+                                android:textColor="@color/colorPrimary"
+                                android:textFontWeight="@android:integer/config_longAnimTime"
+                                android:textSize="16sp"
+                                android:layout_marginTop="8dp"
+                                android:gravity="right"
+
+
+                                />
+
+                            <ImageView
+                                android:id="@+id/idImageViewCloseChangePasswordAccountActivity"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:scaleType="fitEnd"
+                                android:src="@drawable/ic_cancel_black_24dp"
+                                android:layout_margin="8dp"
+                                android:visibility="gone"
+
+                                />
+
+<!--                            <com.google.android.material.card.MaterialCardView-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                app:cardElevation="0dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                app:cardCornerRadius="0dp"-->
+<!--                                android:clickable="true"-->
+<!--                                android:focusable="true"-->
+<!--                                android:checkable="true"-->
+<!--                                android:layout_marginTop="8dp"-->
+
+
+<!--                                >-->
+<!--                                <TextView-->
+
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:fontFamily="sans-serif-black"-->
+<!--                                    android:text="Change Password"-->
+<!--                                    android:textColor="@color/material_on_surface_emphasis_medium"-->
+<!--                                    android:textFontWeight="@android:integer/config_longAnimTime"-->
+<!--                                    android:textSize="16sp"-->
+<!--                                    android:gravity="center"-->
+
+<!--                                    />-->
+
+<!--                            </com.google.android.material.card.MaterialCardView>-->
+
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/idTextInputLayoutCurrentPasswordAccountActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:boxBackgroundColor="#FFFFFF"
+                            android:hint="Enter Current Password"
+                            app:endIconMode="password_toggle"
+                            android:visibility="gone"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/idButtonVerifyAccountActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:insetTop="1dp"
+                            android:insetBottom="1dp"
+                            android:text="Verify"
+                            android:textSize="16sp"
+                            app:rippleColor="#ffff"
+                            app:cornerRadius="0dp"
+
+                            android:visibility="gone"
+
+
+                            />
+
+
+                        <!--                        <com.google.android.material.textfield.TextInputLayout-->
+<!--                            android:id="@+id/textField"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            app:hintAnimationEnabled="false"-->
+<!--                            app:hintEnabled="false"-->
+<!--                            android:background="#FFFFFF"-->
+<!--                            >-->
+
+<!--                            <com.google.android.material.textfield.TextInputEditText-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:hint="Enter Current Password"-->
+
+<!--                                />-->
+
+<!--                        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+
+
+<!--                -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Account State"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textFontWeight="@android:integer/config_longAnimTime"
+
+                    android:textSize="20sp"
+
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/idCardviewSignOutAccountActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp"
+
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/idTextViewSignOutAccountActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Sign Out"
+                            android:textColor="@android:color/secondary_text_light"
+                            android:textFontWeight="@android:integer/config_longAnimTime"
+                            android:textSize="18sp"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.5dp"
+                    android:background="#66000000"
+                    />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/idBottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_navigation"
         android:layout_alignParentBottom="true"
-        app:labelVisibilityMode="labeled"/>
+        app:itemIconSize="22dp"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation" />
 
 </RelativeLayout>
+
+
+<!--<com.google.android.material.button.MaterialButton-->
+<!--android:id="@+id/idButtonSignOutAccountActivity"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_alignParentBottom="true"-->
+<!--android:layout_marginLeft="24dp"-->
+<!--android:layout_marginTop="64dp"-->
+<!--android:layout_marginRight="24dp"-->
+<!--android:layout_marginBottom="24dp"-->
+<!--android:insetTop="1dp"-->
+<!--android:insetBottom="1dp"-->
+
+<!--android:text="Sign out"-->
+<!--android:textSize="16sp"-->
+<!--app:cornerRadius="0dp"-->
+<!--app:rippleColor="#ffff" />-->
+
+<!--<com.google.android.material.button.MaterialButton-->
+<!--android:id="@+id/idButtonChangeCourseAccountActivity"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_alignParentBottom="true"-->
+<!--android:layout_marginLeft="24dp"-->
+<!--android:layout_marginRight="24dp"-->
+<!--android:layout_marginBottom="24dp"-->
+<!--android:insetTop="1dp"-->
+<!--android:insetBottom="1dp"-->
+<!--android:text="Change Course"-->
+<!--android:textSize="16sp"-->
+<!--app:cornerRadius="0dp"-->
+<!--app:rippleColor="#ffff" />-->

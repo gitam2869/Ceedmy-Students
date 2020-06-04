@@ -16,9 +16,17 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+//    for execution of  exoplayer library
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
 }
@@ -50,11 +58,24 @@ dependencies {
     //    implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    //shimmer effect
 
+    //shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
 //    for showing video
-    implementation 'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
+//    implementation 'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
 
+//    for playing video
+//    implementation 'com.google.android.exoplayer:exoplayer:2.10.5'
+
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.10.5'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.5'
+
+
+//    for playing youtube videos
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

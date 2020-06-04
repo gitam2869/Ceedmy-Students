@@ -1,7 +1,5 @@
 package com.example.ceedmyfinal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -12,6 +10,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.alimuzaffar.lib.pin.PinEntryEditText;
 import com.android.volley.AuthFailureError;
@@ -42,6 +42,8 @@ public class EmailVerificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_email_verification);
 
         getSupportActionBar().hide();
+
+        MainActivity.fa.finish();
 
         pinEntryEditTextEmail = findViewById(R.id.idPinEntryEditTextEmail);
         materialButtonBackToHome = findViewById(R.id.idButtonBackToHomeEmailVerificationActivity);
@@ -231,5 +233,14 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         // Show the Alert Dialog box
         alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+
+        moveTaskToBack(true);
+
     }
 }

@@ -1,7 +1,5 @@
 package com.example.ceedmyfinal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -97,6 +97,8 @@ public class ForgotPasswordActivity extends AppCompatActivity
         if(email.length() == 0)
         {
             textInputLayoutEmail.setError("Email ID not blank");
+            textInputLayoutEmail.requestFocus();
+            textInputLayoutEmail.setErrorEnabled(false);
             return;
         }
 

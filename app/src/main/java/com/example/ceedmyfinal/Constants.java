@@ -15,6 +15,37 @@ public class Constants
 
     public static final String URL_USER_STATS = ROOT_URL+"userStats.php";
     public static final String URL_GET_USER_STATS = ROOT_URL+"getUserStats.php";
+    public static final String URL_GET_EXAM_CATEGORY = ROOT_URL+"examCategoryList.php";
+    public static final String URL_GET_DIFFERENT_EXAM_LIST = ROOT_URL+"getExamList.php";
+    public static final String URL_UPDATE_USER_STATS = ROOT_URL+"updateUserStats.php";
+
+    public static final String URL_GET_COURSE_DETAILS = ROOT_URL+"getCourseDetails.php";
+    public static final String URL_CHANGE_PASSWORD = ROOT_URL+"changePassword.php";
+
+    public static final String URL_GET_LIVE_SCHEDULE = ROOT_URL+"liveSchedule.php";
+
+    public static final String URL_SUBSCRIBE_COURSE = ROOT_URL+"userCourses.php";
+    public static final String URL_SUBSCRIBE_COURSE_STATE = ROOT_URL+"subscribeCourseState.php";
+    public static final String URL_GET_SUBSCRIBE_COURSES = ROOT_URL+"subscribeCourses.php";
+
+
+    public static final String URL_WISHLIST_COURSE = ROOT_URL+"userWishlist.php";
+    public static final String URL_WISHLIST_COURSE_STATE = ROOT_URL+"wishlistCourseState.php";
+    public static final String URL_GET_WISHLIST_COURSES = ROOT_URL+"wishlistCourses.php";
+
+    public static final String URL_GET_ALL_COURSE = ROOT_URL+"getAllCourses.php";
+
+    public static final String URL_REMOVE_WISHLIST_COURSE = ROOT_URL+"removeWishlist.php";
+
+    public static final String URL_GET_COURSE_VIDEO = ROOT_URL+"courseVideo.php";
+
+    public static final String URL_ADD_TOKEN = ROOT_URL+"addFCMToken.php";
+
+    public static final String URL_GET_ALL_LIVE_SESSION = ROOT_URL+ "teacher/" + "getAllLiveSessions.php";
+
+
+
+
 
 
 

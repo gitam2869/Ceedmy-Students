@@ -1,11 +1,5 @@
 package com.example.ceedmyfinal;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -45,6 +41,7 @@ public class LoginActivity extends AppCompatActivity
 
 
     public Toast toast;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -114,7 +111,12 @@ public class LoginActivity extends AppCompatActivity
 
         progressDialog = new ProgressDialog(this);
         toast = new Toast(this);
+
+
     }
+
+
+
 
     private void userLogin()
     {
@@ -124,17 +126,24 @@ public class LoginActivity extends AppCompatActivity
         final String email = textInputLayoutEmail.getEditText().getText().toString().trim();
         final String password = textInputLayoutPassword.getEditText().getText().toString().trim();
 
+        Log.d("TAG", "userLogin: "+email.length());
+
         if(email.length() == 0)
         {
             textInputLayoutEmail.setError("Email ID not blank");
+            textInputLayoutEmail.requestFocus();
+            textInputLayoutEmail.setErrorEnabled(false);
             return;
         }
 
         if(password.length() == 0)
         {
             textInputLayoutPassword.setError("Password not blank");
+            textInputLayoutPassword.requestFocus();
+            textInputLayoutPassword.setErrorEnabled(false);
             return;
         }
+
 
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
@@ -250,9 +259,8 @@ public class LoginActivity extends AppCompatActivity
                                         .userLogin("yes");
 
                                 SharedPreferenceManager.getInstance(getApplicationContext())
-                                        .userExamName(
-                                                jsonObject.getString("examname"),
-                                                jsonObject.getString("videolink")
+                                        .userExamCategoryName(
+                                                jsonObject.getString("categoryname")
                                         );
 
                                 startActivity(new Intent(getApplicationContext(), HomePageActivity.class));

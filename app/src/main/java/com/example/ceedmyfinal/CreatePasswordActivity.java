@@ -1,7 +1,5 @@
 package com.example.ceedmyfinal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +8,8 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,6 +40,8 @@ public class CreatePasswordActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_password);
+
+        getSupportActionBar().hide();
 
         textInputLayoutPassword = findViewById(R.id.idTextInputLayoutPasswordCreatePasswordActivity);
         textInputLayoutConfirmPassword = findViewById(R.id.idTextInputLayoutConfirmPasswordCreatePasswordActivity);
@@ -96,18 +98,23 @@ public class CreatePasswordActivity extends AppCompatActivity
         if(password.length() == 0)
         {
             textInputLayoutPassword.setError("Password not blank");
+            textInputLayoutPassword.requestFocus();
+            textInputLayoutPassword.setErrorEnabled(false);
             return;
 
         }
         if(password.length() < 8)
         {
             textInputLayoutPassword.setError("Enter Atleast 8 Characters");
+            textInputLayoutPassword.requestFocus();
             return;
         }
 
         if(!password.equals(confirmPassword))
         {
             textInputLayoutConfirmPassword.setError("Password not match");
+            textInputLayoutConfirmPassword.requestFocus();
+
             return;
         }
 
