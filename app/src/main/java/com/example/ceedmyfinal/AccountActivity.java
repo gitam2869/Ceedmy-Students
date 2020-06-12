@@ -59,6 +59,7 @@ public class AccountActivity extends AppCompatActivity
     public Toast toast;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -657,6 +658,7 @@ public class AccountActivity extends AppCompatActivity
                                 // then app will close
 //                                finish();
                                 SharedPreferenceManager.getInstance(getApplicationContext()).logout();
+                                HomePageActivity.fa.finish();
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
                             }

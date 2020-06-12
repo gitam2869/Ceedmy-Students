@@ -2,7 +2,9 @@ package com.example.ceedmyfinal;
 
 public class Constants
 {
-    private final static String ROOT_URL = "http://ceedmy.in/ceed/v1/";
+    private final static String ROOT_URL = "http://agro-checkmake.000webhostapp.com/ceed/v1/";
+
+//    private final static String ROOT_URL = "http://ceedmy.in/ceed/v1/";
 
     public static final String URL_VALIDITY_USER = ROOT_URL+"userValidity.php";
     public static final String URL_SEND_EMAIL_OTP = ROOT_URL+"sendEmailOTP.php";

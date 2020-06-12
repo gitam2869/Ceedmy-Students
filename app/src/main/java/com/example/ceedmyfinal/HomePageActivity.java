@@ -1,5 +1,6 @@
 package com.example.ceedmyfinal;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +29,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 import org.json.JSONArray;
@@ -45,6 +49,10 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
 {
     ShimmerFrameLayout shimmerFrameLayout;
 
+    public static Activity fa;
+    private ImageView imageViewNotAvailable;
+    private TextView textViewNotAvailable;
+
     private BottomNavigationView bottomNavigationView;
 
     //adapter
@@ -62,13 +70,15 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
     private MaterialCardView materialCardViewDemoVideo;
     private MaterialCardView materialCardViewDemoTest;
     private MaterialCardView materialCardViewMoreCourses;
-
+    private MaterialButton materialButtonTryAgain;
 
     @RequiresApi(api = Build.VERSION_CODES.N_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        fa = this;
 
         NetworkConfiguration networkConfiguration = new NetworkConfiguration(this);
 
@@ -118,6 +128,9 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
 
 
         shimmerFrameLayout = findViewById(R.id.idShimmerExamList);
+        imageViewNotAvailable = findViewById(R.id.idImageViewNoHomepageActivity);
+        textViewNotAvailable = findViewById(R.id.idTextViewHomepageActivity);
+        materialButtonTryAgain = findViewById(R.id.idButtonTryAgainHomepageActivity);
 
         bottomNavigationView = findViewById(R.id.idBottomNavigationView);
 
@@ -168,6 +181,16 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
                 }
 
                 return false;
+            }
+        });
+
+        materialButtonTryAgain.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
+                startActivity(getIntent());
             }
         });
 
@@ -363,6 +386,11 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
                             public void onErrorResponse(VolleyError error)
                             {
 //                                progressDialog.dismiss();
+                                textViewNotAvailable.setText("Server Not Responde\n Please try again...");
+                                shimmerFrameLayout.setVisibility(View.GONE);
+                                imageViewNotAvailable.setVisibility(View.VISIBLE);
+                                textViewNotAvailable.setVisibility(View.VISIBLE);
+                                materialButtonTryAgain.setVisibility(View.VISIBLE);
 
                                 Log.d("TAG", "loadInBackground: 14");
                             }
@@ -416,6 +444,10 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
             //converting the string to json array object
             JSONArray array = new JSONArray(data[0]);
 
+            if(array.length() == 0)
+            {
+                examsNotAvailable();
+            }
 
             for (int i = 0; i < array.length(); i++)
             {
@@ -436,7 +468,6 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
 
             recyclerView.setAdapter(adapter);
 
-            shimmerFrameLayout.setVisibility(View.GONE);
 
 
         }
@@ -444,6 +475,8 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
         {
             e.printStackTrace();
         }
+
+        shimmerFrameLayout.setVisibility(View.GONE);
 
         getLoaderManager().destroyLoader(OPERATION_SEARCH_LOADER);
 
@@ -455,76 +488,88 @@ public class HomePageActivity extends AppCompatActivity implements LoaderManager
 
     }
 
+
+    private void examsNotAvailable()
+    {
+        textViewNotAvailable.setText("Exams Not Available for\n "+SharedPreferenceManager.getInstance(getApplicationContext()).getUserExamCategory());
+        shimmerFrameLayout.setVisibility(View.GONE);
+        imageViewNotAvailable.setVisibility(View.VISIBLE);
+        textViewNotAvailable.setVisibility(View.VISIBLE);
+    }
+
     @Override
     public void onBackPressed()
     {
 
-        // Create the object of
-        // AlertDialog Builder class
-        AlertDialog.Builder builder
-                = new AlertDialog
-                .Builder(HomePageActivity.this);
-
-        // Set the message show for the Alert time
-        builder.setMessage("Do you want to exit ?");
-
-        // Set Alert Title
-        builder.setTitle("Alert !");
-
-        // Set Cancelable false
-        // for when the user clicks on the outside
-        // the Dialog Box then it will remain show
-        builder.setCancelable(true);
-
-        // Set the positive button with yes name
-        // OnClickListener method is use of
-        // DialogInterface interface.
-
-        builder
-                .setPositiveButton(
-                        "Yes",
-                        new DialogInterface
-                                .OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which)
-                            {
-
-                                // When the user click yes button
-                                // then app will close
-//                                finish();
-                                moveTaskToBack(true);
-                                finish();
-
-                            }
-                        });
-
-        // Set the Negative button with No name
-        // OnClickListener method is use
-        // of DialogInterface interface.
-        builder
-                .setNegativeButton(
-                        "No",
-                        new DialogInterface
-                                .OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which)
-                            {
-
-                                // If user click no
-                                // then dialog box is canceled.
-                                dialog.cancel();
-                            }
-                        });
-
-        // Create the Alert dialog
-        AlertDialog alertDialog = builder.create();
-
-        // Show the Alert Dialog box
-        alertDialog.show();
+        moveTaskToBack(true);
+//
+//        // Create the object of
+//        // AlertDialog Builder class
+//        AlertDialog.Builder builder
+//                = new AlertDialog
+//                .Builder(HomePageActivity.this);
+//
+//        // Set the message show for the Alert time
+//        builder.setMessage("Do you want to exit ?");
+//
+//        // Set Alert Title
+//        builder.setTitle("Alert !");
+//
+//        // Set Cancelable false
+//        // for when the user clicks on the outside
+//        // the Dialog Box then it will remain show
+//        builder.setCancelable(true);
+//
+//        // Set the positive button with yes name
+//        // OnClickListener method is use of
+//        // DialogInterface interface.
+//
+//        builder
+//                .setPositiveButton(
+//                        "Yes",
+//                        new DialogInterface
+//                                .OnClickListener() {
+//
+//                            @Override
+//                            public void onClick(DialogInterface dialog,
+//                                                int which)
+//                            {
+//
+//                                // When the user click yes button
+//                                // then app will close
+////                                finish();
+//                                moveTaskToBack(true);
+////                                finish();
+//
+//
+//                            }
+//                        });
+//
+//        // Set the Negative button with No name
+//        // OnClickListener method is use
+//        // of DialogInterface interface.
+//        builder
+//                .setNegativeButton(
+//                        "No",
+//                        new DialogInterface
+//                                .OnClickListener() {
+//
+//                            @Override
+//                            public void onClick(DialogInterface dialog,
+//                                                int which)
+//                            {
+//
+//                                // If user click no
+//                                // then dialog box is canceled.
+//                                dialog.cancel();
+//                            }
+//                        });
+//
+//        // Create the Alert dialog
+//        AlertDialog alertDialog = builder.create();
+//
+//        // Show the Alert Dialog box
+//        alertDialog.show();
     }
 
     public void alertMessage()

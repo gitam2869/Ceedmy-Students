@@ -56,6 +56,79 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+
+        android:weightSum="3"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <ImageView
+                android:id="@+id/idImageViewNoHomepageActivity"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_notavailable"
+                android:visibility="gone"
+
+                />
+
+            <TextView
+                android:id="@+id/idTextViewHomepageActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/idImageViewNoHomepageActivity"
+                android:layout_centerInParent="true"
+                android:layout_margin="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="Your Wishlist is Empty"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="20sp"
+                android:visibility="gone"
+
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/idButtonTryAgainHomepageActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/idTextViewHomepageActivity"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:insetTop="1dp"
+                android:insetBottom="1dp"
+                android:text="Try Again"
+                android:textSize="16sp"
+                android:visibility="gone"
+                app:backgroundTint="#E5303F9F"
+                app:cornerRadius="0dp"
+                app:rippleColor="#ffff"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>
 

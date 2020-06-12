@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         fa = this;
 
 //        materialButtonTryAgain = findViewById(R.id.idButtonTryAgainNOInternet);
@@ -182,7 +183,8 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+    {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case 2:
@@ -191,6 +193,8 @@ public class MainActivity extends AppCompatActivity
                     Log.v("TAG","Permission: "+permissions[0]+ "was "+grantResults[0]);
                     //resume tasks needing this permission
                 }else{
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+
                 }
                 break;
 
@@ -398,11 +402,12 @@ public class MainActivity extends AppCompatActivity
         alertDialog.show();
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        finish();
-        moveTaskToBack(true);
-    }
+//    @Override
+//    public void onBackPressed()
+//    {
+//        super.onBackPressed();
+//        moveTaskToBack(true);
+//        finish();
+//
+//    }
 }

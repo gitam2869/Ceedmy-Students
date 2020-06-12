@@ -4,7 +4,10 @@
 
     <domain-config cleartextTrafficPermitted="true">
 <!--        <domain includeSubdomains="true">http://192.168.0.59/</domain>-->
-        <domain includeSubdomains="true">https://ceedmy.in/</domain>
+<!--        <domain includeSubdomains="true">https://ceedmy.in/</domain>-->
+
+        <domain includeSubdomains="true">https://agro-checkmake.000webhostapp.com/</domain>
+
 
     </domain-config>
 </network-security-config>

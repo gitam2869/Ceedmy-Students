@@ -263,6 +263,7 @@ public class LoginActivity extends AppCompatActivity
                                                 jsonObject.getString("categoryname")
                                         );
 
+                                MainActivity.fa.finish();
                                 startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
                                 finish();
 

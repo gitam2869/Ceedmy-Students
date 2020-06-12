@@ -14,14 +14,15 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
             android:foregroundGravity="center"
-            android:src="@drawable/logo3" />
+            android:src="@drawable/logo3"
+            />
 
         <TextView
             android:id="@+id/idTextViewTheLearningWorldMainActivity"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
@@ -30,7 +31,6 @@
             android:textSize="22sp"
             android:textStyle="italic" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,6 +67,5 @@
             />
 
     </LinearLayout>
-
 
 </RelativeLayout>

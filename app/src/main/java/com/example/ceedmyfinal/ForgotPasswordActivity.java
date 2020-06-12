@@ -37,6 +37,7 @@ public class ForgotPasswordActivity extends AppCompatActivity
     private TextInputLayout textInputLayoutEmail;
     private MaterialButton materialButtonSendLink;
     private MaterialButton materialButtonBackToLogin;
+    private TextView textViewCheckEmail;
 
     private ProgressDialog progressDialog;
 
@@ -55,6 +56,7 @@ public class ForgotPasswordActivity extends AppCompatActivity
         textInputLayoutEmail = findViewById(R.id.idTextInputLayoutEmailForgotPasswordActivity);
         materialButtonSendLink = findViewById(R.id.idButtonSendLinkForgotPasswordActivity);
         materialButtonBackToLogin = findViewById(R.id.idButtonBackToLoginForgotPasswordActivity);
+        textViewCheckEmail = findViewById(R.id.idTextViewCheckEmailForgotPasswordActivity);
 
         String email = getIntent().getStringExtra("email");
         textInputLayoutEmail.getEditText().setText(email);
@@ -84,6 +86,18 @@ public class ForgotPasswordActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
+
+        textViewCheckEmail.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                startActivity(intent);
             }
         });
 
@@ -140,6 +154,7 @@ public class ForgotPasswordActivity extends AppCompatActivity
 
                                 textViewSendMessage.setVisibility(View.VISIBLE);
                                 materialButtonBackToLogin.setVisibility(View.VISIBLE);
+                                textViewCheckEmail.setVisibility(View.VISIBLE);
                             }
                             else
                             {

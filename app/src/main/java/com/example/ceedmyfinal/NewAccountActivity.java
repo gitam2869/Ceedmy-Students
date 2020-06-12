@@ -22,6 +22,7 @@ import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.Loader;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -46,6 +47,8 @@ public class NewAccountActivity extends AppCompatActivity implements LoaderManag
 
 //    String name;
     public static final int OPERATION_SEARCH_LOADER = 22;
+
+    private boolean isCrateUser = true;
 
     private ProgressDialog progressDialog;
 
@@ -105,7 +108,10 @@ public class NewAccountActivity extends AppCompatActivity implements LoaderManag
             @Override
             public void onClick(View v)
             {
-                creatUser();
+                if(isCrateUser)
+                {
+                    creatUser();
+                }
 
             }
         });
@@ -131,14 +137,13 @@ public class NewAccountActivity extends AppCompatActivity implements LoaderManag
     @RequiresApi(api = Build.VERSION_CODES.N_MR1)
     private void creatUser()
     {
-
         textInputLayoutName.setErrorEnabled(false);
         textInputLayoutMobile.setErrorEnabled(false);
         textInputLayoutEmail.setErrorEnabled(false);
 
-        String name = textInputLayoutName.getEditText().getText().toString().trim();
-        String mobile = textInputLayoutMobile.getEditText().getText().toString().trim();
-        String email = textInputLayoutEmail.getEditText().getText().toString().trim();
+        final String name = textInputLayoutName.getEditText().getText().toString().trim();
+        final String mobile = textInputLayoutMobile.getEditText().getText().toString().trim();
+        final String email = textInputLayoutEmail.getEditText().getText().toString().trim();
 
         if(name.length() == 0)
         {
@@ -182,36 +187,107 @@ public class NewAccountActivity extends AppCompatActivity implements LoaderManag
             return;
         }
 
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
-        // Create a bundle called queryBundle
-        Bundle queryBundle = new Bundle();
+        String finalURL = Constants.URL_VALIDITY_USER+"?name="+name+"&mobile="+mobile+"&email="+email;
 
-        // Use putString with OPERATION_QUERY_URL_EXTRA as the key and the String value of the URL as the value
-        //url value here is https://jsonplaceholder.typicode.com/posts
-        queryBundle.putString("OPERATION_QUERY_URL_EXTRA", Constants.URL_VALIDITY_USER);
-        queryBundle.putString("name", name);
-        queryBundle.putString("mobile", mobile);
-        queryBundle.putString("email", email);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET,
+                finalURL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        try
+                        {
+                            JSONObject jsonObject = new JSONObject(response);
 
-//        String url = Constants.URL_VALIDITY_USER+"?name="+name+"&mobile="+mobile+"&email+"+email+"&password"+password;
+                            if(!jsonObject.getBoolean("error"))
+                            {
+                                SharedPreferenceManager.getInstance(getApplicationContext())
+                                        .userInfo(name, mobile, email);
+
+                                if(isCrateUser)
+                                {
+                                    isCrateUser = false;
+                                    sendEmailOTP();
+                                }
+
+                            }
+                            else
+                            {
+                                progressDialog.dismiss();
+                                Toast toast = Toast.makeText(
+                                        getApplicationContext(),
+                                        jsonObject.getString("message"),
+                                        Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
 
 
-        // Call getSupportLoaderManager and store it in a LoaderManager variable
-        LoaderManager loaderManager = LoaderManager.getInstance(this);
+                        }
+                        catch (JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        progressDialog.dismiss();
+                    }
+                }
+        );
 
-        // Get our Loader by calling getLoader and passing the ID we specified
-        Loader<String> loader = loaderManager.getLoader(OPERATION_SEARCH_LOADER);
+//        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
-        // If the Loader was null, initialize it. Else, restart it.
-        if(loader==null)
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
+
+        if(isCrateUser)
         {
-            loaderManager.initLoader(OPERATION_SEARCH_LOADER, queryBundle, this);
-        }
-        else
-        {
-            loaderManager.restartLoader(OPERATION_SEARCH_LOADER, queryBundle, this);
+            RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
         }
 
+
+//        // Create a bundle called queryBundle
+//        Bundle queryBundle = new Bundle();
+//
+//        // Use putString with OPERATION_QUERY_URL_EXTRA as the key and the String value of the URL as the value
+//        //url value here is https://jsonplaceholder.typicode.com/posts
+//        queryBundle.putString("OPERATION_QUERY_URL_EXTRA", Constants.URL_VALIDITY_USER);
+//        queryBundle.putString("name", name);
+//        queryBundle.putString("mobile", mobile);
+//        queryBundle.putString("email", email);
+//
+////        String url = Constants.URL_VALIDITY_USER+"?name="+name+"&mobile="+mobile+"&email+"+email+"&password"+password;
+//
+//
+//        // Call getSupportLoaderManager and store it in a LoaderManager variable
+//        LoaderManager loaderManager = LoaderManager.getInstance(this);
+//
+//        // Get our Loader by calling getLoader and passing the ID we specified
+//        Loader<String> loader = loaderManager.getLoader(OPERATION_SEARCH_LOADER);
+//
+//        // If the Loader was null, initialize it. Else, restart it.
+//        if(loader==null)
+//        {
+//            loaderManager.initLoader(OPERATION_SEARCH_LOADER, queryBundle, this);
+//        }
+//        else
+//        {
+//            loaderManager.restartLoader(OPERATION_SEARCH_LOADER, queryBundle, this);
+//        }
 
     }
 
@@ -226,7 +302,10 @@ public class NewAccountActivity extends AppCompatActivity implements LoaderManag
     {
         final String[] stringResponse = new String[1];
 
-        return new AsyncTaskLoader<String[]>(this) {
+        Log.d("TAG", "onCreateLoader: email");
+
+        return new AsyncTaskLoader<String[]>(this)
+        {
             @Nullable
             @Override
             public String[] loadInBackground()
@@ -394,6 +473,7 @@ public class NewAccountActivity extends AppCompatActivity implements LoaderManag
                             {
                                 SharedPreferenceManager.getInstance(getApplicationContext())
                                         .userSendEmail("yes");
+
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), EmailVerificationActivity.class));
                             }

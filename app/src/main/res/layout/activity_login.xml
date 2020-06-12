@@ -45,7 +45,6 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idTextInputLayoutEmailLoginActivity"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -59,8 +58,7 @@
                 app:boxCornerRadiusBottomEnd="0dp"
                 app:boxCornerRadiusTopStart="0dp"
 
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="1.5dp"
+                app:boxBackgroundColor="@color/whiteColor"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -72,7 +70,6 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idTextInputLayoutPasswordLoginActivity"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -86,8 +83,7 @@
                 app:boxCornerRadiusBottomEnd="0dp"
                 app:boxCornerRadiusTopStart="0dp"
 
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="1.5dp"
+                app:boxBackgroundColor="@color/whiteColor"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -159,7 +155,7 @@
                 android:textSize="16sp"
                 app:rippleColor="#ffff"
                 app:cornerRadius="0dp"
-                app:backgroundTint="@color/design_default_color_primary"
+                app:backgroundTint="#E5303F9F"
                 />
 
         </LinearLayout>
